@@ -3,10 +3,9 @@ from keras.preprocessing import image
 import matplotlib.pyplot as plt 
 import numpy as np
 from keras.utils.np_utils import to_categorical
-import random,shutil
 from keras.models import Sequential
-from keras.layers import Dropout,Conv2D,Flatten,Dense, MaxPooling2D, RandomRotation, RandomFlip, RandomZoom, BatchNormalization
-from keras import layers
+from keras.layers import Dropout,Conv2D,Flatten,Dense, MaxPooling2D, BatchNormalization
+
 
 
 def generator(dir, gen=image.ImageDataGenerator(rescale=1./255), shuffle=True,batch_size=1,target_size=(24,24),class_mode='categorical' ):
@@ -21,19 +20,7 @@ SPE= len(train_batch.classes)//BS
 VS = len(valid_batch.classes)//BS
 print(SPE,VS)
 
-
-# img,labels= next(train_batch)
-# print(img.shape)
-data_augmentation = Sequential(                # Augmentation so no overfitting   (More diversify)
-  [
-    RandomFlip("horizontal"),
-    RandomRotation(0.1),   #0.1 x 2pi (anticlockwise cause positive value)
-    RandomZoom(0.1),      #Positive means zoom out   Negative zoom in
-  ]
-)
-
 model = Sequential([
-    data_augmentation,
     Conv2D(32, kernel_size=(3, 3), activation='relu', input_shape=(24, 24, 1)),
     MaxPooling2D(pool_size=(1, 1)),
     Conv2D(32, (3, 3), activation='relu'),
@@ -42,10 +29,8 @@ model = Sequential([
     # again
     Conv2D(64, (3, 3), activation='relu'),
     MaxPooling2D(pool_size=(1, 1)),
-
     # 64 convolution filters used each of size 3x3
     # choose the best features via pooling
-
     # randomly turn neurons on and off to improve convergence
     Dropout(0.25),
     # flatten since too many dimensions, we only want a classification output
