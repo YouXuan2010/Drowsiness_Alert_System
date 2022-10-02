@@ -9,4 +9,4 @@ To capture real-time live feeds, we used pre-trained OpenCV's Cascade Classifier
 After the eyes are detected, our trained model determines if the eyes are opened or closed.
 If the driver's eyes remain closed for more than 2 seconds, it will trigger a script (to alert the driver/emergency brake)
 After preprogamming a mock car with Arduino, we interface Arduino Uno with Python to control it with our computer.
-The Arduino Uno will react to keyboard inputs as well as inputs if the eyes are closed.
+The Arduino Uno will react to the keyboard inputs as well as inputs if the eyes are closed.
