@@ -1,2 +1,2 @@
-# Hackathon
+# Hackathon (Mechathon)
 Drowsiness Detector
