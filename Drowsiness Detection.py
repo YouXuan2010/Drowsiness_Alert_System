@@ -9,7 +9,7 @@ from pygame import mixer
 def controller():
     global drowsy
     drowsy=0
-    ser = serial.Serial('COM8', 9600)
+    ser = serial.Serial('COM6', 9600)
     while True:
         if drowsy==1:
             ser.write(b'x')
@@ -120,5 +120,4 @@ if __name__=="__main__":
     p2 = Thread(target=cam)
     p1.start()
     p2.start()
-
 
