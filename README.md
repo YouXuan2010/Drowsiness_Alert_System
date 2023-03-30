@@ -1,5 +1,4 @@
 # Hackathon (Mechathon)
-Drowsiness Detector
 
 Our project consists of one main script (Drowsiness_Detector.py) and one programme to train our Machine Learning Model (model.py).
 We used TensorFlow modules to create a CNN which makes up the body of our hack.
